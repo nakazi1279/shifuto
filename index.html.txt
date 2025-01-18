@@ -29,7 +29,7 @@
       const shift = document.getElementById('shift').value;
 
       try {
-        const response = await fetch("YOUR_GAS_WEB_APP_URL", { // GASのウェブアプリURLに置き換える
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyyftnen-_W9HxLOvDF_cl5CSx2OQcg016RlTSQmT4R3RLK963ZkXGEfA-2n6g0vluS/exec", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
