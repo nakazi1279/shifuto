@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>シフト入力フォーム</title>
+</head>
+<body>
+  <h1>シフト入力フォーム</h1>
+  <form id="shiftForm">
+    <label for="name">名前:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="date">日付:</label>
+    <input type="date" id="date" name="date" required><br><br>
+
+    <label for="shift">シフト:</label>
+    <input type="text" id="shift" name="shift" required><br><br>
+
+    <button type="submit">送信</button>
+  </form>
+
+  <script>
+    document.getElementById('shiftForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+      const shift = document.getElementById('shift').value;
+
+      try {
+        const response = await fetch("YOUR_GAS_WEB_APP_URL", { // GASのウェブアプリURLに置き換える
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, date, shift }),
+        });
+
+        if (response.ok) {
+          alert("シフトが送信されました！");
+        } else {
+          alert("送信に失敗しました。");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("エラーが発生しました。");
+      }
+    });
+  </script>
+</body>
+</html>
